@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 def home(request):
- return HttpResponse("Inicio")
+ return render(request, "core/home.html")
+
 def about(request):
  return HttpResponse("Historia")
 def services(request):
