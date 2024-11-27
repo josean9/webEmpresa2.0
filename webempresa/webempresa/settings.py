@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+from django.apps import AppConfig
 from pathlib import Path
 import os
 
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "core",
-    "services",
+    'services.apps.ServicesConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -129,3 +131,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+class ServicesConfig(AppConfig):
+    name = 'services'
+    verbose_name = 'Gestor de servicios'
