@@ -1,6 +1,4 @@
 from django.db import models
-"""from ckeditor.fields import RichTextField"""
-
 class Page(models.Model):
     title = models.CharField(max_length=200,
     verbose_name="Título")
@@ -11,7 +9,6 @@ class Page(models.Model):
     updated = models.DateTimeField(auto_now=True,
     verbose_name="Fecha de edición")
     order = models.SmallIntegerField(verbose_name="Orden", default=0)
-
     class Meta:
         verbose_name = "página"
         verbose_name_plural = "páginas"
