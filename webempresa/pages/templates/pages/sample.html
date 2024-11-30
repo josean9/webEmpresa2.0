@@ -16,10 +16,11 @@
                 {{page.title}}</span> 
             </h2> 
             <div class="section-content"> 
-            {{page.content|safe}} 
+              {{page.content|safe}}
             {% if user.is_authenticated %} 
             <p><a href="{% url 'admin:pages_page_change' page.id %}">Editar</a></p> 
-            {% endif %} 
+            {% endif %}
+             
             </div>  
           </div> 
         </div> 

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "blog",
     'social.apps.SocialConfig',
     'pages.apps.PagesConfig',
+    'ckeditor',
 
 
 ]
@@ -140,3 +141,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 class ServicesConfig(AppConfig):
     name = 'services'
     verbose_name = 'Gestor de servicios'
+
+    # Ckeditor
+CKEDITOR_CONFIGS = {
+ 'default': {
+ 'toolbar': 'Custom',
+ 'toolbar_Custom': [
+ ['Bold', 'Italic', 'Underline'],
+ ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
+'-',
+ 'JustifyLeft', 'JustifyCenter', 'JustifyRight',
+'JustifyBlock'],
+ ['Link', 'Unlink']
+ ]
+ }
+}
