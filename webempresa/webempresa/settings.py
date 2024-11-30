@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "blog",
     'social.apps.SocialConfig',
     'pages.apps.PagesConfig',
+    
+   
 
 
 ]
@@ -56,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.auth.context_processors.auth'
 ]
 
 ROOT_URLCONF = 'webempresa.urls'
@@ -140,3 +143,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 class ServicesConfig(AppConfig):
     name = 'services'
     verbose_name = 'Gestor de servicios'
+
