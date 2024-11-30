@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'services.apps.ServicesConfig',
     "blog",
     'social.apps.SocialConfig',
+    'pages.apps.PagesConfig',
 
 
 ]
