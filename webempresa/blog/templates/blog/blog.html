@@ -3,44 +3,140 @@
 {% block title %}Blog{% endblock %}
 {% block content %}
  {% for post in posts %}
- <section class="page-section cta">
- <div class="container">
- <div class="row">
- <div class="col-xl-9 mx-auto">
- <div class="cta-innerv text-center rounded">
- <h2 class="section-heading mb-5">
- <span class="section-heading-upper">
- {{post.published}}</span>
- <span class="section-heading-lower">
- {{post.title}}</span>
- </h2>
-<p class="mb-0">
- <img class="mx-auto d-flex img-fluid mb-3 mblg-0"
- src="{{post.image.url}}" alt="">
- </p>
- <p class="mb-0 mbt">
-    <span class="section-heading-under">
-    Publicado por <em><b>{{post.author}}</b></em>
-    en <em>{{post.categories.all|join:", "}}</em>
-    </span>
-   </p>
+ <style>/* Blog-specific styles */
+   .blog-page {
+     background-color: #f9f9f9; /* Fondo gris claro */
+     color: #444; /* Texto gris oscuro */
+     padding: 3rem 1rem;
+   }
    
-<p class="mb-0 mbt">{{post.content}}</p>
- <p class="mb-0 mbt">
-
-    <span class="section-heading-under">
-        Publicado por <em><b>{{post.author}}</b></em> en
-        {% for category in post.categories.all %}
-        <a href="{% url 'category' category.id %}" class="link">
-        {{category.name}}</a>
-        {% endfor %}
-       </span>
-       
- </p>
-</div>
- </div>
- </div>
- </div>
+   .blog-page h1, 
+   .blog-page h2, 
+   .blog-page h3, 
+   .blog-page h4, 
+   .blog-page h5, 
+   .blog-page h6 {
+     font-family: 'Raleway', sans-serif;
+     color: #556b2f; /* Verde oliva oscuro */
+   }
+   
+   .blog-page p {
+     line-height: 1.8;
+     color: #555; /* Gris oscuro */
+   }
+   
+   .blog-page a {
+     color: #6b8e23; /* Verde oliva más claro */
+     text-decoration: none;
+   }
+   
+   .blog-page a:hover {
+     color: #3a5f0b; /* Verde oliva intenso */
+     text-decoration: underline;
+   }
+   
+   .blog-page .section-heading {
+     text-transform: uppercase;
+     color: #6b8e23; /* Verde oliva más claro */
+   }
+   
+   .blog-page .section-heading .section-heading-upper {
+     display: block;
+     font-size: 1rem;
+     font-weight: 800;
+     padding-bottom: 0.5rem;
+     color: #333; /* Gris neutro */
+   }
+   
+   .blog-page .section-heading .section-heading-lower {
+     display: block;
+     font-size: 2.5rem;
+     font-weight: 300;
+     color: #556b2f; /* Verde oliva oscuro */
+   }
+   
+   .blog-page .blog-post {
+     background-color: #ffffff; /* Fondo blanco */
+     border: 1px solid #ddd; /* Borde claro */
+     padding: 1.5rem;
+     margin-bottom: 2rem;
+     border-radius: 8px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+   }
+   
+   .blog-page .blog-post h2 {
+     color: #556b2f; /* Verde oliva oscuro */
+     margin-bottom: 1rem;
+   }
+   
+   .blog-page .blog-post p {
+     color: #444; /* Gris oscuro */
+   }
+   
+   .blog-page .blog-post .read-more {
+     display: inline-block;
+     margin-top: 1rem;
+     color: #6b8e23; /* Verde oliva más claro */
+     font-weight: bold;
+     text-transform: uppercase;
+   }
+   
+   .blog-page .blog-post .read-more:hover {
+     color: #3a5f0b; /* Verde oliva intenso */
+   }
+   
+   /* Botones específicos para blog */
+   .blog-page .btn {
+     background-color: #6b8e23; /* Verde oliva claro */
+     color: #fff; /* Texto blanco */
+     padding: 0.5rem 1rem;
+     border: none;
+     border-radius: 5px;
+     font-size: 0.9rem;
+   }
+   
+   .blog-page .btn:hover {
+     background-color: #556b2f; /* Verde oliva oscuro */
+     color: #fff;
+   }
+   </style>
+ <section class="page-section cta blog-page">
+   <div class="container">
+     <div class="row">
+       <div class="col-xl-9 mx-auto">
+         <div class="cta-innerv text-center rounded blog-post">
+           <h2 class="section-heading mb-5">
+             <span class="section-heading-upper">{{post.published}}</span>
+             <span class="section-heading-lower">{{post.title}}</span>
+           </h2>
+           <p class="mb-0">
+             <img
+               class="mx-auto d-flex img-fluid mb-3 mblg-0"
+               src="{{post.image.url}}"
+               alt=""
+             />
+           </p>
+           <p class="mb-0 mbt">
+             <span class="section-heading-under">
+               Publicado por <em><b>{{post.author}}</b></em>
+               en <em>{{post.categories.all|join:", "}}</em>
+             </span>
+           </p>
+           <p class="mb-0 mbt">{{post.content}}</p>
+           <p class="mb-0 mbt">
+             <span class="section-heading-under">
+               Publicado por <em><b>{{post.author}}</b></em> en
+               {% for category in post.categories.all %}
+               <a href="{% url 'category' category.id %}" class="link">
+                 {{category.name}}</a>
+               {% endfor %}
+             </span>
+           </p>
+         </div>
+       </div>
+     </div>
+   </div>
  </section>
+ 
  {% endfor %}
 {% endblock %}
